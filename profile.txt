@@ -1,0 +1,24 @@
+parse_git_branch() {
+
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+
+}
+
+# Gjør at det står oyvind midtbo@mappenavn$ i terminalen
+#export PS1='\u@\W$ '
+export PS1="\u@\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+
+alias django_run="python /Users/oyvind\ midtbo/dev/like-repository-proto/manage.py runserver"
+alias django_mappe="cd /Users/oyvind\ midtbo/dev/like-repository-proto"
+alias ll="ls -l"
+
+# Farger på mapper ved ls-kommandoen
+CLICOLOR=1
+LSCOLORS=gxfxcxdxbxegedabagacad
+export LSCOLORS CLICOLOR
+
+export PATH="/usr/local/git/bin:~/local/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+
+export EDITOR='mate -w'
+
+echo "export PATH=\$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin" >> ~/.profileexport PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
